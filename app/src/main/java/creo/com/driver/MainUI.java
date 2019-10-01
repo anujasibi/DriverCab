@@ -50,6 +50,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.ncorti.slidetoact.SlideToActView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -96,15 +97,30 @@ public class MainUI extends AppCompatActivity implements OnMapReadyCallback, Goo
 
 
         im=findViewById(R.id.dr);
-        textView=findViewById(R.id.text);
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        SlideToActView sta = (SlideToActView) findViewById(R.id.example);
+        sta.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onSlideComplete(@NonNull SlideToActView view) {
+                Toast.makeText(MainUI.this,"Accepted the request",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainUI.this, CustomerDetails.class));
-                Animatoo.animateSlideUp(MainUI.this);
+                Animatoo.animateFade(MainUI.this);
             }
         });
+        sta.setOnSlideResetListener(new SlideToActView.OnSlideResetListener() {
+            @Override
+            public void onSlideReset(@NonNull SlideToActView view) {
+                Toast.makeText(MainUI.this,"Reset",Toast.LENGTH_SHORT).show();
+            }
+        });
+      //  textView=findViewById(R.id.text);
+
+        /*textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
 
         im.setOnClickListener(new View.OnClickListener() {
             @Override

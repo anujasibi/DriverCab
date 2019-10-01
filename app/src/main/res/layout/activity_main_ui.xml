@@ -170,7 +170,7 @@
                     android:layout_toEndOf="@+id/ij"
                     android:text="Place" />
 
-                <TextView
+                <!--<TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="30dp"
@@ -185,7 +185,20 @@
                     android:layout_below="@+id/ij"
                     android:background="@drawable/selc"
 
-                    />
+                    />-->
+                <com.ncorti.slidetoact.SlideToActView
+                    android:id="@+id/example"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    app:outer_color="@color/blue"
+                    android:layout_below="@+id/ij"
+                    android:layout_marginTop="20dp"
+                    sothree:slider_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"
+                    app:text="Accept" />
+
 
 
             </RelativeLayout>
