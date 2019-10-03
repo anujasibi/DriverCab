@@ -23,6 +23,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,7 +44,8 @@ public class Login extends AppCompatActivity {
     SessionManager sessionManager;
     private ProgressDialog dialog ;
     private String token;
-
+    private String token_firebase;
+FirebaseAnalytics firebaseAnalytics;
     private String URLline = Global.BASE_URL+"driver/driver_login/";
     private String URLlinenew = Global.BASE_URL+"driver/check_driver_proof/";
 
@@ -54,6 +57,9 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         sessionManager = new SessionManager(this);
         textView=findViewById(R.id.login);
+        firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+         token_firebase = FirebaseInstanceId.getInstance().getToken();
+        Log.d("tokkkken","lhykhiyh"+token);
         phoneno=findViewById(R.id.name);
         password=findViewById(R.id.namee);
         forgot=findViewById(R.id.forgot);
@@ -143,6 +149,7 @@ public class Login extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("phone_no",phoneno.getText().toString());
                 params.put("password",password.getText().toString());
+                params.put("firebase_token",token_firebase);
                 return params;
             }
 
